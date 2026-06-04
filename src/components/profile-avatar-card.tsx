@@ -64,12 +64,12 @@ export function ProfileAvatarCard() {
                 </div> */}
 
 
-
+{/* 
 
                 {eyesVisible && (
                     <div className="absolute inset-0 flex pt-20 justify-center pointer-events-none">
                         <div className="flex gap-6">
-                            <div className="w-4 h-2 bg-white rounded-full relative overflow-hidden">
+                            <div className="w-4 h-3 bg-white rounded-full relative overflow-hidden">
                                 <div
                                     className="w-2 h-2 bg-black rounded-full absolute top-1/2 left-1/2"
                                     style={{
@@ -77,7 +77,7 @@ export function ProfileAvatarCard() {
                                     }}
                                 />
                             </div>
-                            <div className="w-4 h-2 bg-white rounded-full relative overflow-hidden">
+                            <div className="w-4 h-3 bg-white rounded-full relative overflow-hidden">
                                 <div
                                     className="w-2 h-2 bg-black rounded-full absolute top-1/2 left-1/2"
                                     style={{
@@ -87,7 +87,7 @@ export function ProfileAvatarCard() {
                             </div>
                         </div>
                     </div>
-                )}
+                )} */}
 
 
             </div>

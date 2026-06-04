@@ -28,12 +28,13 @@ export function NavMain({
     items?: {
       title: string
       url: string
+      icon?: React.ReactNode
     }[]
   }[]
 }) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+     
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
@@ -42,18 +43,19 @@ export function NavMain({
             className="group/collapsible"
             render={<SidebarMenuItem />}
           >
-            <CollapsibleTrigger
-              render={<SidebarMenuButton tooltip={item.title} />}
+            <SidebarMenuButton
+              render={<SidebarMenuButton tooltip={item.title} render={<a href={item.url} />} />}
             >
               {item.icon}
               <span>{item.title}</span>
-              <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-open/collapsible:rotate-90" />
-            </CollapsibleTrigger>
+              {/* <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-open/collapsible:rotate-90" /> */}
+            </SidebarMenuButton>
             <CollapsibleContent>
               <SidebarMenuSub>
                 {item.items?.map((subItem) => (
                   <SidebarMenuSubItem key={subItem.title}>
                     <SidebarMenuSubButton render={<a href={subItem.url} />}>
+                    {subItem.icon}
                       <span>{subItem.title}</span>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
