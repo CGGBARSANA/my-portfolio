@@ -50,7 +50,7 @@ const data = {
   navMain: [
     {
       title: "Github",
-      url: "https://github.com/BarsanaXD",
+      url: "https://github.com/CGGBARSANA",
       icon: (
         <FaGithub />
       ),
