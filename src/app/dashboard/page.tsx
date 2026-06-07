@@ -57,7 +57,7 @@ export default function Page() {
 
 <div className="h-screen flex min-h-0 gap-4 p-4 md:p-6">
   <div className="flex-2 min-h-0 overflow-y-auto">
-    <div className="w-full  flex flex-col pb-4 pr-2" ><Card><CardTitle className="px-4">Project</CardTitle></Card></div>
+    <div className="w-full  flex flex-col pb-4 pr-2" ><Card><CardTitle className="px-4">BETA PORTFOLIO</CardTitle></Card></div>
     <ProjectCard />
     <ProjectCard />
     <ProjectCard />
