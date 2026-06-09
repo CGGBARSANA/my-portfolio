@@ -54,7 +54,7 @@ export default function Chat() {
         setInput("");
         setLoading(true);
 
-        const res = await fetch("/api/gemini", {
+        const res = await fetch("http://localhost:8080/api/gemini", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: input }),

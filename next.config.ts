@@ -58,8 +58,11 @@ images: {
       protocol: "https",
       hostname: "camo.githubusercontent.com",
     },
-    
-    
+            {
+      protocol: "https",
+      hostname: "i.ibb.co",
+    },
+  
   ],
 },
 };

@@ -1,53 +1,117 @@
+"use client";
+
+import * as React from "react"
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-export default function ProjectCard() {
+export type ProjectItem = {
+  title: string;
+  image?: string;
+  images?: string[];
+  imageAlt: string;
+  badges: string[];
+  webhref?: string;
+  description: string;
+  highlights: string[];
+  href?: string;
+};
+
+export type ProjectCardProp = {
+  items: ProjectItem[];
+};
+
+
+
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import Link from "next/link";
+
+export function CarouselDemo({ item }: { item: ProjectItem }) {
   return (
-    <div className="w-full  flex flex-col pb-4 pr-2" >
-    <Card  >
-      
-      {/* Image Section */}
-      <div>
-        <Image
-          src="https://camo.githubusercontent.com/5e45bc648dba68520ce949a53690af6bcef2880f84a1d46cbb1636649afd6d84/68747470733a2f2f796176757a63656c696b65722e6769746875622e696f2f73616d706c652d696d616765732f696d6167652d313032312e6a7067" // replace with your image path
-          alt="Green Market Capstone Project"
-          width={200}
-          height={200}
-          className="object-cover"
-        />
-      </div>
+    <Carousel className="h-240px">
+      <CarouselContent>
+        {item.images?.map((image, index) => (
+          <CarouselItem key={index}>
+            <div className="">
 
-      {/* Header */}
-      <CardHeader className="space-y-2">
-        <CardTitle className="text-xl font-semibold">
-          Green Market – Capstone Project
-        </CardTitle>
+              <CardContent className="flex items-center justify-center ">
+                <Image
+                  src={image}
+                  alt={image}
+                  width={800}
+                  height={800}
+                  className="object-cover"
+                />
+              </CardContent>
 
-        <div className="flex flex-wrap gap-2">
-          <Badge variant="secondary">Full Stack</Badge>
-          <Badge variant="secondary">Mobile</Badge>
-          <Badge variant="secondary">Web</Badge>
-          <Badge variant="secondary">Firebase</Badge>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  )
+}
+
+
+export default function ProjectCard({ items }: ProjectCardProp) {
+  return (
+    <>
+      {items.map((item, index) => (
+        <div key={index} className="w-full flex flex-col pb-4 pr-2">
+          <Card>
+            <CarouselDemo item={item} />
+
+            <CardHeader className="space-y-2">
+              <CardTitle className="text-xl font-semibold">
+                {item.title}
+              </CardTitle>
+
+              <div className="flex flex-wrap gap-2">
+                {item.badges.map((badge) => (
+                  <Badge key={badge} variant="secondary">
+                    {badge}
+                  </Badge>
+                ))}
+              </div>
+            </CardHeader>
+            {/* {item.webhref && (
+                <Link className="hover:text-blue" href={item.webhref}>
+                  LINK
+                </Link>
+              )} */}
+            <CardContent className="space-y-3 text-sm text-muted-foreground">
+              <p>
+                {item.description}
+                {item.webhref && (
+                  <>
+                    {" "}Link:{" "}
+                    <Link
+                      href={item.webhref}
+                      className="hover:text-blue-500 transition-colors"
+                    >
+                      {item.webhref}
+                    </Link>
+                  </>
+                )}
+              </p>
+              <ul className="list-disc pl-5 space-y-1">
+                {item.highlights.map((highlight, i) => (
+                  <li key={i}>{highlight}</li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
         </div>
-      </CardHeader>
-
-      {/* Content */}
-      <CardContent className="space-y-3 text-sm text-muted-foreground">
-        <p>
-          Full Stack mobile and web developer using Dart, Flutter, Firebase, and Android Studio.
-        </p>
-
-        <ul className="list-disc pl-5 space-y-1">
-          <li>
-            Designed the project using Figma and developed it using Dart with Flutter framework and Android Studio.
-          </li>
-          <li>
-            Integrated a real-time chat system using Firebase.
-          </li>
-        </ul>
-      </CardContent>
-    </Card>
-    </div>
+      ))}
+    </>
   );
 }
