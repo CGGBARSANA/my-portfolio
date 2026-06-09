@@ -35,29 +35,32 @@ import Link from "next/link";
 
 export function CarouselDemo({ item }: { item: ProjectItem }) {
   return (
-    <Carousel className="h-240px">
-      <CarouselContent>
-        {item.images?.map((image, index) => (
-          <CarouselItem key={index}>
-            <div className="">
+    <div className="flex flex-col gap-4">
+      
+      {/* CAROUSEL (fixed space only) */}
+      <Carousel className="w-full">
+        <CarouselContent>
+          {item.images?.map((image, index) => (
+            <CarouselItem key={index}>
+              <Card className="h-[550px] w-full overflow-hidden">
+                <CardContent className="p-0 h-full w-full flex items-center justify-center bg-black">
+                  <Image
+                    src={image}
+                    alt={image}
+                    width={800}
+                    height={800}
+                    className="w-full h-full object-contain"
+                  />
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
 
-              <CardContent className="flex items-center justify-center ">
-                <Image
-                  src={image}
-                  alt={image}
-                  width={800}
-                  height={800}
-                  className="object-cover"
-                />
-              </CardContent>
-
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    </div>
   )
 }
 
@@ -74,26 +77,8 @@ export default function ProjectCard({ items }: ProjectCardProp) {
               <CardTitle className="text-xl font-semibold">
                 {item.title}
               </CardTitle>
-
-              <div className="flex flex-wrap gap-2">
-                {item.badges.map((badge) => (
-                  <Badge key={badge} variant="secondary">
-                    {badge}
-                  </Badge>
-                ))}
-              </div>
-            </CardHeader>
-            {/* {item.webhref && (
-                <Link className="hover:text-blue" href={item.webhref}>
-                  LINK
-                </Link>
-              )} */}
-            <CardContent className="space-y-3 text-sm text-muted-foreground">
-              <p>
-                {item.description}
-                {item.webhref && (
+              {item.webhref && (
                   <>
-                    {" "}Link:{" "}
                     <Link
                       href={item.webhref}
                       className="hover:text-blue-500 transition-colors"
@@ -102,6 +87,19 @@ export default function ProjectCard({ items }: ProjectCardProp) {
                     </Link>
                   </>
                 )}
+              <div className="flex flex-wrap gap-2">
+                {item.badges.map((badge) => (
+                  <Badge key={badge} variant="secondary">
+                    {badge}
+                  </Badge>
+                ))}
+              </div>
+            </CardHeader>
+ 
+            <CardContent className="space-y-3 text-sm text-muted-foreground">
+              <p>
+                {item.description}
+  
               </p>
               <ul className="list-disc pl-5 space-y-1">
                 {item.highlights.map((highlight, i) => (

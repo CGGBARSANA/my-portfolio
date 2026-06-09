@@ -16,15 +16,41 @@ import { useState, useEffect } from "react";
 type ActiveView = "projects" | "experience" | "game";
 export default function Page() {
   const [activeView, setActiveView] = useState<ActiveView>("projects")
-    useEffect(() => {
+  useEffect(() => {
     console.log("Active view changed to:", activeView);
   }, [activeView]);
   const projects: ProjectItem[] = [
     {
+      title: "Iconic Trio – Personal Branding Project",
+      images: ["https://i.ibb.co/5gZyrw5G/iconic-trio.png",],
+      imageAlt: "Iconic Trio Website Preview",
+      badges: ["Wix", "Web Design", "UI/UX", "Branding"],
+      webhref: "https://barsanaxd.wixsite.com/iconictrio",
+      description:
+        "A personal branding and portfolio website showcasing the Iconic Trio concept, featuring curated visuals, layout design, and creative identity presentation built using Wix.",
+      highlights: [
+        "Designed and structured a personal branding portfolio using Wix",
+        "Focused on visual storytelling and thematic consistency",
+        "Implemented responsive layout and section-based navigation",
+      ],
+    },
+    {
       title: "Green Market – Capstone Project",
-      image: "/green-market.jpg",
+      images: [
+        "https://i.ibb.co/rKDrPdtG/greenmarkety.jpg",
+        "https://i.ibb.co/fY5YBKP0/greenmarket-Rating.jpg",
+        "https://i.ibb.co/Vc191F3Z/green-market-receipt.jpg",
+        "https://i.ibb.co/ynZbY9Cg/greenmarketmessage.jpg",
+        "https://i.ibb.co/r2cgRy91/greenmarketmobile.jpg",
+        "https://i.ibb.co/8L3MkTCv/greenmarketmobilelogin.jpg",
+        "https://i.ibb.co/tTmbh8z6/greenmarketlandingpagemobile.jpg",
+        "https://i.ibb.co/2YRn8syF/greenmarketdashboardmobile.jpg",
+        "https://i.ibb.co/DfJkT20W/greenmarketmessagemobile.jpg",
+        "https://i.ibb.co/yFNKMs4Z/greenmarketmarloumobile.jpg"
+      ],
       imageAlt: "Green Market App",
       badges: ["Flutter", "Dart", "Firebase", "Android Studio"],
+      webhref: "https://sites.google.com/tip.edu.ph/greenmarket/home",
       description:
         "A full-stack mobile and web capstone project designed and developed using Flutter and Firebase.",
       highlights: [
@@ -92,6 +118,7 @@ export default function Page() {
       image: "/emoticom.jpg",
       imageAlt: "EmotiCom AAC System",
       badges: ["Python", "TensorFlow"],
+      webhref: "https://github.com/BarsanaXD/emoticom-repo",
       description:
         "AI-powered AAC system designed to assist users with communication challenges.",
       highlights: [
@@ -115,7 +142,7 @@ export default function Page() {
     },
     {
       title: "REALTI",
-      images: ["https://i.ibb.co/fzXCXtNn/realti-start.png","https://i.ibb.co/1fTrGB0D/option-realti.png","https://i.ibb.co/NdD7SBSz/introduction-realti.png"],
+      images: ["https://i.ibb.co/fzXCXtNn/realti-start.png", "https://i.ibb.co/1fTrGB0D/option-realti.png", "https://i.ibb.co/NdD7SBSz/introduction-realti.png"],
       imageAlt: "Computer Learning Game",
       badges: ["HTML", "CSS", "JavaScript"],
       webhref:
@@ -130,7 +157,7 @@ export default function Page() {
     },
     {
       title: "RENT(A)CAR",
-      images: ["https://i.ibb.co/SwF1Q47G/main.png","https://i.ibb.co/5xTChpG5/rental.png",],
+      images: ["https://i.ibb.co/SwF1Q47G/main.png", "https://i.ibb.co/5xTChpG5/rental.png",],
       imageAlt: "Car Rental System",
       badges: ["Java", "MySQL"],
       description:
@@ -143,7 +170,7 @@ export default function Page() {
     },
   ];
 
-    const navButtons: { label: string; view: ActiveView }[] = [
+  const navButtons: { label: string; view: ActiveView }[] = [
     { label: "PROJECTS", view: "projects" },
     { label: "WORK EXPERIENCE", view: "experience" },
     { label: "PLAY SPACESHIP GAME", view: "game" },
@@ -185,16 +212,15 @@ export default function Page() {
           <div className="flex-2 min-h-0 overflow-y-auto">
             <div className="w-full  flex flex-col pb-4 pr-2" >
               <Card className="flex-row justify-between px-2">
-               <div>
+                <div>
                   {navButtons.map(({ label, view }) => (
                     <Button
                       key={view}
                       className={`mx-1 transition-all duration-200
                         hover:scale-105 hover:shadow-md active:scale-95
-                        ${
-                          activeView === view
-                            ? "bg-primary text-primary-foreground"
-                            : "hover:bg-muted"
+                        ${activeView === view
+                          ? "bg-primary text-primary-foreground"
+                          : "hover:bg-muted"
                         }`}
                       onClick={() => setActiveView(view)}
                     >
@@ -212,7 +238,7 @@ export default function Page() {
               {activeView === "projects" && <ProjectCard items={projects} />}
               {activeView === "experience" && (
                 <div className="p-4 rounded-xl bg-muted/50">
-            
+
                   <p className="text-muted-foreground">Work experience coming soon...</p>
                 </div>
               )}
@@ -222,9 +248,6 @@ export default function Page() {
             <Chat />
           </div>
         </div>
-
-        {/* <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" /> */}
-
       </SidebarInset>
     </SidebarProvider>
   )
