@@ -12,6 +12,7 @@ import { useState, useEffect } from "react";
 import ProjectCard from "@/components/project-card";
 import { ActiveView } from "@/const/nav-button";
 import { useDebuggerDisabled } from "@/hooks/use-debugger-disabled";
+import POST_VISITOR_PAYLOAD from "@/api/Visitor/POST";
 function getVisitorId() {
   let id = localStorage.getItem("visitor_id");
 
@@ -33,8 +34,8 @@ export default function Page() {
       try {
         setLoading(true);
 
-        // const fetchedData = await GET_TABLE_CONTENT();
-
+        const fetchedData = await POST_VISITOR_PAYLOAD();
+        console.log(fetchedData)
         // setData(fetchedData.data);
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
