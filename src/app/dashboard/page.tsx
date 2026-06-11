@@ -24,7 +24,7 @@ function getVisitorId() {
   return id;
 }
 export default function Page() {
-    const { ready, devToolsOpen } = useDebuggerDisabled();
+  const { ready, devToolsOpen } = useDebuggerDisabled();
   // const [data, setData] = useState<LinoflapDashboard[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -35,7 +35,7 @@ export default function Page() {
         setLoading(true);
 
         const fetchedData = await POST_VISITOR_PAYLOAD();
-        console.log(fetchedData)
+        console.log(fetchedData);
         // setData(fetchedData.data);
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
@@ -43,7 +43,7 @@ export default function Page() {
         setLoading(false);
       }
     }
-    
+
     fetchTable();
   }, [ready, devToolsOpen]);
   const [activeView, setActiveView] = useState<ActiveView>("projects");
