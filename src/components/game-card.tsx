@@ -127,7 +127,6 @@ export function GameCard() {
     return () => clearInterval(interval);
   }, [isPlaying]);
 
-  // ── Auto shoot ─────────────────────────────────────────────────────────────
   useEffect(() => {
     if (!isPlaying) return;
     const interval = setInterval(() => {
@@ -141,7 +140,6 @@ export function GameCard() {
     return () => clearInterval(interval);
   }, [isPlaying]);
 
-  // ── Game loop ──────────────────────────────────────────────────────────────
   useEffect(() => {
     if (!isPlaying) return;
     const interval = setInterval(() => {
@@ -217,7 +215,6 @@ export function GameCard() {
     return () => clearInterval(interval);
   }, [isPlaying]);
 
-  // ── Restart ────────────────────────────────────────────────────────────────
   const start = useCallback(() => {
     setEnemies([]);
     setBullets([]);
@@ -231,7 +228,7 @@ export function GameCard() {
   const { w, h } = arenaSize;
 
   return (
-    <Card className="w-full h-[86vh] flex flex-col bg-black/80">
+    <Card className="w-full h-full flex flex-col bg-black/80 overflow-hidden">
       <CardContent className="flex-1 min-h-0 p-3">
         <div
           ref={containerRef}

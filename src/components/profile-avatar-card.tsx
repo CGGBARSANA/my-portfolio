@@ -39,15 +39,15 @@ export function ProfileAvatarCard() {
             y: Math.max(-max, Math.min(max, dy * 0.02)),
         };
     };
-    const rect = containerRef.current?.getBoundingClientRect();
-    const offset = getEyeOffset(rect);
+    // const rect = containerRef.current?.getBoundingClientRect();
+    // const offset = getEyeOffset(rect);
     return (
         <CardContent className="flex flex-col items-center p-4 ">
             <div ref={containerRef} className="relative w-[200px] h-[200px]">
 
                 <Image
                     className="h-full w-full rounded-full object-cover"
-                    src="https://media.licdn.com/dms/image/v2/D5635AQGdJ8DHwdi6tg/profile-framedphoto-shrink_800_800/B56Z6CYqzbKkAY-/0/1780303965790?e=1781064000&v=beta&t=jaZa9s1G4Tk6iuoukUxn3S7yiuGhdEBfcmwi1Z2zGBQ"
+                    src="/uploads/profile.jpg"
                     alt="Profile Avatar"
                     width={800}
                     height={800}
