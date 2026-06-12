@@ -82,7 +82,7 @@ export default function Chat() {
           key={i}
           className={`p-3 rounded-lg text-sm whitespace-pre-wrap ${
             msg.role === "user"
-              ? "bg-muted text-white ml-auto w-fit"
+              ? "bg-muted  ml-auto w-fit"
               : "bg-muted w-fit"
           }`}
         >

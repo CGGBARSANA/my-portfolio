@@ -43,7 +43,7 @@ export function ProfileAvatarCard() {
     // const offset = getEyeOffset(rect);
     return (
         <CardContent className="flex flex-col items-center p-4 ">
-            <div ref={containerRef} className="relative w-[200px] h-[200px]">
+            <div ref={containerRef} className="relative w-full max-w-[200px] aspect-square mx-auto">
 
                 <Image
                     className="h-full w-full rounded-full object-cover"

@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 import { ProjectItem } from "@/const/project";
+import { ScrollArea } from "./ui/scroll-area";
 
 export function CarouselDemo({ item }: { item: ProjectItem }) {
   return (
@@ -27,7 +28,7 @@ export function CarouselDemo({ item }: { item: ProjectItem }) {
         <CarouselContent className="p-1 border-0">
           {item.images?.map((image, index) => (
             <CarouselItem key={index}>
-              <Card className="h-137.5 w-full overflow-hidden ">
+              <div className="h-137.5 w-full overflow-hidden ">
                 <CardContent className="p-0 h-full w-full flex items-center justify-center bg-black">
                   <Image
                     src={image}
@@ -37,7 +38,7 @@ export function CarouselDemo({ item }: { item: ProjectItem }) {
                     className="w-full h-full object-contain"
                   />
                 </CardContent>
-              </Card>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -52,8 +53,10 @@ export function CarouselDemo({ item }: { item: ProjectItem }) {
 export default function ProjectCard({ items }: ProjectCardProp) {
   return (
     <>
+    <div className="w-full h-full flex flex-col ">
+      <ScrollArea className="flex-1 min-h-0">
       {items.map((item, index) => (
-        <div key={index} className="w-full flex flex-col pb-4 pr-2 p-1">
+        <div key={index} className="w-full flex flex-col pb-2 ">
           <Card>
             <CarouselDemo item={item} />
 
@@ -91,6 +94,8 @@ export default function ProjectCard({ items }: ProjectCardProp) {
           </Card>
         </div>
       ))}
+      </ScrollArea>
+      </div>
     </>
   );
 }
