@@ -92,10 +92,7 @@ export default function Page() {
           </div> */}
 
         <div className="h-screen flex min-h-0 p-2 gap-2">
-   
           <div className="flex-2 flex flex-col min-h-0 ">
-          
-         
             <div className="flex flex-col pb-2">
               <Card className="flex-row justify-between p-2 ">
                 <div>
@@ -120,7 +117,7 @@ export default function Page() {
                 </div>
               </Card>
             </div>
-         
+
             <div className="transition-opacity duration-300 flex-1 flex flex-col min-h-0 overflow-auto">
               {activeView === "game" && <GameCard />}
               {activeView === "projects" && <ProjectCard items={projects} />}
