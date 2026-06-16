@@ -29,6 +29,23 @@ import { Separator } from "@base-ui/react";
 
 //   return id;
 // }
+export async function fetchTable(
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  url?: string
+) {
+  try {
+    setLoading(true);
+
+    const fetchedData = await POST_VISITOR_PAYLOAD(url);
+    console.log(fetchedData);
+    // setData(fetchedData.data);
+  } catch (error) {
+    console.error("Error fetching dashboard data:", error);
+  } finally {
+    setLoading(false);
+  }
+}
+
 export default function Page() {
   const { ready, devToolsOpen } = useDebuggerDisabled();
   // const [data, setData] = useState<LinoflapDashboard[]>([]);
@@ -36,24 +53,15 @@ export default function Page() {
 
   useEffect(() => {
     if (!ready || devToolsOpen) return; // block fetch if devtools open
-    async function fetchTable() {
-      try {
-        setLoading(true);
 
-        const fetchedData = await POST_VISITOR_PAYLOAD();
-        console.log(fetchedData);
-        // setData(fetchedData.data);
-      } catch (error) {
-        console.error("Error fetching dashboard data:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
 
-    fetchTable();
+    fetchTable(setLoading);
   }, [ready, devToolsOpen]);
   const [activeView, setActiveView] = useState<ActiveView>("chat");
+
   useEffect(() => {
+    fetchTable(setLoading, activeView)
+    // const fetchedData = await POST_VISITOR_PAYLOAD("chat");
     console.log("Active view changed to:", activeView);
   }, [activeView]);
 
@@ -80,8 +88,8 @@ return (
                     hover:scale-105 hover:shadow-md active:scale-95
                 ${
                   activeView === view
-                    ? "bg-primary text-primary-foreground"
-                    : "hover:bg-muted hover:text-white"
+                    ? "bg-(--button-active) text-primary-foreground"
+                    : "hover:primary hover:primary-foreground"
                 }`}
                     onClick={() => setActiveView(view)}
                   >

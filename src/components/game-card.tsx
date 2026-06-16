@@ -228,11 +228,11 @@ export function GameCard() {
   const { w, h } = arenaSize;
 
   return (
-    <Card className="w-full h-[86vh] flex flex-col bg-black/80 rounded-2xl">
+    <div className="w-full h-full flex flex-col rounded-2xl">
       <CardContent className="flex-1 min-h-0 p-3">
         <div
           ref={containerRef}
-          className="relative w-full h-[70vh] rounded-xl overflow-hidden bg-[#060612]"
+          className="relative w-full h-full rounded-xl overflow-hidden bg-[#060612]"
         >
           {/* ── Stars canvas (bottom layer) ── */}
           <canvas
@@ -360,6 +360,6 @@ export function GameCard() {
           }
         `}</style>
       </CardContent>
-    </Card>
+    </div>
   );
 }

@@ -82,6 +82,7 @@
   --sidebar-border: oklch(0.84 0.025 68);
   --sidebar-ring: oklch(0.52 0.08 55);
   --border-input: oklch(0% 0 0);
+  --button-active: oklch(36.687% 0.02466 59.427);
 }
 
 .dark {
@@ -117,6 +118,7 @@
   --sidebar-border: oklch(0.26 0.022 268);
   --sidebar-ring: oklch(0.65 0.14 65);
   --border-input: oklch(91.023% 0.07374 74.604);
+  --button-active: oklch(91.023% 0.07374 74.604);
 }
 
 @layer base {
