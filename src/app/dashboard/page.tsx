@@ -50,22 +50,13 @@ export default function Page() {
   const { ready, devToolsOpen } = useDebuggerDisabled();
   // const [data, setData] = useState<LinoflapDashboard[]>([]);
   const [loading, setLoading] = useState(false);
-
+  const [activeView, setActiveView] = useState<ActiveView>("chat");
   useEffect(() => {
     if (!ready || devToolsOpen) return; // block fetch if devtools open
 
 
-    fetchTable(setLoading);
-  }, [ready, devToolsOpen]);
-  const [activeView, setActiveView] = useState<ActiveView>("chat");
-
-  useEffect(() => {
     fetchTable(setLoading, activeView)
-    // const fetchedData = await POST_VISITOR_PAYLOAD("chat");
-    console.log("Active view changed to:", activeView);
-  }, [activeView]);
-
-
+  }, [ready, devToolsOpen, activeView]);
 return (
   <SidebarProvider>
     <AppSidebar />
