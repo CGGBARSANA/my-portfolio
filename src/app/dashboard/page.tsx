@@ -11,23 +11,24 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { CSSProperties } from "react";
+// import { CSSProperties } from "react";
 import { useState, useEffect } from "react";
 import ProjectCard from "@/components/project-card";
-import { ActiveView } from "@/const/nav-button";
+import { ActiveView, navButtons } from "@/const/nav-button";
 import { useDebuggerDisabled } from "@/hooks/use-debugger-disabled";
 import POST_VISITOR_PAYLOAD from "@/api/Visitor/POST";
 import { Separator } from "@base-ui/react";
-function getVisitorId() {
-  let id = localStorage.getItem("visitor_id");
+// import { SiteHeader } from "@/components/site-header";
+// function getVisitorId() {
+//   let id = localStorage.getItem("visitor_id");
 
-  if (!id) {
-    id = crypto.randomUUID();
-    localStorage.setItem("visitor_id", id);
-  }
+//   if (!id) {
+//     id = crypto.randomUUID();
+//     localStorage.setItem("visitor_id", id);
+//   }
 
-  return id;
-}
+//   return id;
+// }
 export default function Page() {
   const { ready, devToolsOpen } = useDebuggerDisabled();
   // const [data, setData] = useState<LinoflapDashboard[]>([]);
@@ -51,74 +52,55 @@ export default function Page() {
 
     fetchTable();
   }, [ready, devToolsOpen]);
-  const [activeView, setActiveView] = useState<ActiveView>("projects");
+  const [activeView, setActiveView] = useState<ActiveView>("chat");
   useEffect(() => {
     console.log("Active view changed to:", activeView);
   }, [activeView]);
 
-  const navButtons: { label: string; view: ActiveView }[] = [
-    { label: "PROJECTS", view: "projects" },
-    { label: "WORK EXPERIENCE", view: "experience" },
-    { label: "PLAY SPACESHIP GAME", view: "game" },
-  ];
-  return (
-    <SidebarProvider
-    // style={
-    //   {
-    //     "--sidebar-width": "calc(var(--spacing) * 72)",
-    //     "--header-height": "calc(var(--spacing) * 12)",
-    //   } as CSSProperties
-    // }
-    >
-      <AppSidebar />
 
-      <SidebarInset>
-        <header className="flex">
-          {/* <div className="flex items-center ">
+return (
+  <SidebarProvider>
+    <AppSidebar />
+
+    <SidebarInset>
+      <div className="flex flex-col h-svh">  {/* h-svh is safer than h-screen in sidebar layouts */}
+        <header className="flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
+          <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
             <SidebarTrigger className="-ml-1" />
             <Separator
               orientation="vertical"
-              className="mr-2 data-vertical:h-4 data-vertical:self-auto"
+              className="mx-2 h-4 data-vertical:self-auto"
             />
-          </div> */}
-        </header>
-        {/* <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-            <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-              <div className="aspect-video rounded-xl bg-muted/50" />
-              <div className="aspect-video rounded-xl bg-muted/50" />
-              <div className="aspect-video rounded-xl bg-muted/50" />
-            </div>
-            <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-          </div> */}
-
-        <div className="h-screen flex min-h-0 p-2 gap-2">
-          <div className="flex-2 flex flex-col min-h-0 ">
-            <div className="flex flex-col pb-2">
-              <Card className="flex-row justify-between p-2 ">
-                <div>
-                  {navButtons.map(({ label, view }) => (
-                    <Button
-                      key={view}
-                      className={`mx-1 transition-all duration-200
-                hover:scale-105 hover:shadow-md active:scale-95
+            <div className="flex flex-1 flex-row items-center justify-between p-2">
+              <div>
+                {navButtons.map(({ label, view }) => (
+                  <Button
+                    key={view}
+                    className={`mx-1 text-xs transition-all duration-200
+                    hover:scale-105 hover:shadow-md active:scale-95
                 ${
                   activeView === view
                     ? "bg-primary text-primary-foreground"
-                    : "hover:bg-muted"
+                    : "hover:bg-muted hover:text-white"
                 }`}
-                      onClick={() => setActiveView(view)}
-                    >
-                      {label}
-                    </Button>
-                  ))}
-                </div>
-                <div>
-                  <DarkModeButton />
-                </div>
-              </Card>
+                    onClick={() => setActiveView(view)}
+                  >
+                    {label}
+                  </Button>
+                ))}
+              </div>
+              <div>
+                <DarkModeButton />
+              </div>
             </div>
+          </div>
+        </header>
 
-            <div className="transition-opacity duration-300 flex-1 flex flex-col min-h-0 overflow-auto">
+        {/* flex-1 fills remaining height after header; min-h-0 allows it to shrink */}
+        <div className="flex-1 flex min-h-0 p-2 gap-2 ">
+          <div className="flex-1 flex flex-col min-h-0">
+            <div className="flex-1 flex flex-col min-h-0 overflow-auto transition-opacity duration-300 p-4">
+              {activeView === "chat" && <Chat />}
               {activeView === "game" && <GameCard />}
               {activeView === "projects" && <ProjectCard items={projects} />}
               {activeView === "experience" && (
@@ -130,12 +112,9 @@ export default function Page() {
               )}
             </div>
           </div>
-
-          <div className="flex-1 min-h-0">
-            <Chat />
-          </div>
         </div>
-      </SidebarInset>
-    </SidebarProvider>
-  );
+      </div>
+    </SidebarInset>
+  </SidebarProvider>
+);
 }

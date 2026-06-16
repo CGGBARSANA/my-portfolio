@@ -69,7 +69,7 @@ export default function Chat() {
 
   return (
     <>
-<Card className="w-full h-full flex flex-col px-4 overflow-hidden">
+<Card className="w-full h-full flex flex-col px-4 overflow-hidden rounded-2xl">
   {!loading && messages.length === 0 && (
     <div className="flex-1 flex items-center justify-center">
       <CardTitle className="text-center">{displayedText}</CardTitle>
@@ -96,6 +96,7 @@ export default function Chat() {
   </ScrollArea>
   <div className="flex gap-2">
     <Input
+      className="border-(--border-input)"
       value={input}
       onChange={(e) => setInput(e.target.value)}
       placeholder="Ask something..."

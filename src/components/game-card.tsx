@@ -228,7 +228,7 @@ export function GameCard() {
   const { w, h } = arenaSize;
 
   return (
-    <Card className="w-full h-[86vh] flex flex-col bg-black/80">
+    <Card className="w-full h-[86vh] flex flex-col bg-black/80 rounded-2xl">
       <CardContent className="flex-1 min-h-0 p-3">
         <div
           ref={containerRef}

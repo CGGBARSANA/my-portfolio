@@ -25,7 +25,7 @@ export function CarouselDemo({ item }: { item: ProjectItem }) {
     <div className="flex flex-col gap-4">
       {/* CAROUSEL (fixed space only) */}
       <Carousel className="w-full ">
-        <CarouselContent className="p-1 border-0">
+        <CarouselContent className="p-1 border-0 rounded-2xl">
           {item.images?.map((image, index) => (
             <CarouselItem key={index}>
               <div className="h-137.5 w-full overflow-hidden ">
@@ -57,10 +57,10 @@ export default function ProjectCard({ items }: ProjectCardProp) {
         <ScrollArea className="flex-1 min-h-0">
           {items.map((item, index) => (
             <div key={index} className="w-full flex flex-col pb-2 ">
-              <Card>
+              <Card className="rounded-2xl">
                 <CarouselDemo item={item} />
 
-                <CardHeader className="space-y-2">
+                <CardHeader className="space-y-2 ">
                   <CardTitle className="text-xl font-semibold">
                     {item.title}
                   </CardTitle>
@@ -83,7 +83,7 @@ export default function ProjectCard({ items }: ProjectCardProp) {
                   </div>
                 </CardHeader>
 
-                <CardContent className="space-y-3 text-sm text-muted-foreground">
+                <CardContent className="space-y-3 text-sm text-muted-foreground rounded-2xl">
                   <p>{item.description}</p>
                   <ul className="list-disc pl-5 space-y-1">
                     {item.highlights.map((highlight, i) => (

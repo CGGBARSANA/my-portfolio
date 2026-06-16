@@ -1,6 +1,8 @@
-export type ActiveView = "projects" | "experience" | "game";
+export type ActiveView = "projects" | "experience" | "game" | "chat";
 export const navButtons: { label: string; view: ActiveView }[] = [
-  { label: "PROJECTS", view: "projects" },
-  { label: "WORK EXPERIENCE", view: "experience" },
-  { label: "PLAY SPACESHIP GAME", view: "game" },
-];
+    { label: "AI Agent", view: "chat" },
+    { label: "Projects", view: "projects" },
+    { label: "Work Experience", view: "experience" },
+    { label: "Space Blaster", view: "game" },
+
+  ];
