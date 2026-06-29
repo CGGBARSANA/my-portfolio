@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardTitle } from "@/components/ui/card";
@@ -13,13 +13,16 @@ type Message = {
   content: string;
 };
 
-function MessageBubble({ text }: { text: string }) {
+function MessageBubble({ text, onUpdate,}: { text: string, onUpdate?: () => void; }) {
   const animated = useSlowedText(text);
-
+    useEffect(() => {
+    onUpdate?.();
+  }, [animated, onUpdate]);
   return <div>{animated}</div>;
 }
 
 export default function Chat() {
+  const bottomRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -39,6 +42,13 @@ export default function Chat() {
 
     return () => clearInterval(interval);
   }, []);
+
+  const scrollToBottom = () => {
+  bottomRef.current?.scrollIntoView({
+    behavior: "smooth",
+    block: "end",
+  });
+};
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -69,44 +79,45 @@ export default function Chat() {
 
   return (
     <>
-<Card className="w-full h-full flex flex-col px-4 overflow-hidden rounded-2xl">
-  {!loading && messages.length === 0 && (
-    <div className="flex-1 flex items-center justify-center">
-      <CardTitle className="text-center">{displayedText}</CardTitle>
-    </div>
-  )}
-  <ScrollArea className="flex-1 min-h-0 pr-4">
-    <div className="space-y-4">
-      {messages.map((msg, i) => (
-        <div
-          key={i}
-          className={`p-3 rounded-lg text-sm whitespace-pre-wrap ${
-            msg.role === "user"
-              ? "bg-muted  ml-auto w-fit"
-              : "bg-muted w-fit"
-          }`}
-        >
-          <MessageBubble text={msg.content} />
+      <Card className="w-full h-full flex flex-col px-4 overflow-hidden rounded-2xl">
+        {!loading && messages.length === 0 && (
+          <div className="flex-1 flex items-center justify-center">
+            <CardTitle className="text-center">{displayedText}</CardTitle>
+          </div>
+        )}
+        <ScrollArea className="flex-1 min-h-0 pr-2">
+          <div className="space-y-4">
+            {messages.map((msg, i) => (
+              <div
+                key={i}
+                className={`p-3 rounded-lg text-sm whitespace-pre-wrap break-words max-w-2xl ${
+                  msg.role === "user"
+                    ? "bg-primary text-[var(--text-color-mode)] ml-auto w-fit"
+                    : "bg-muted w-fit"
+                }`}
+              >
+                <MessageBubble text={msg.content} onUpdate={scrollToBottom} />
+              </div>
+            ))}
+            {loading && (
+              <div className="text-sm text-muted-foreground">Thinking...</div>
+            )}
+            <div ref={bottomRef} />
+          </div>
+        </ScrollArea>
+        <div className="flex gap-2">
+          <Input
+            className="border-(--border-input)"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask something..."
+            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+          />
+          <Button onClick={sendMessage} disabled={loading}>
+            Send
+          </Button>
         </div>
-      ))}
-      {loading && (
-        <div className="text-sm text-muted-foreground">Thinking...</div>
-      )}
-    </div>
-  </ScrollArea>
-  <div className="flex gap-2">
-    <Input
-      className="border-(--border-input)"
-      value={input}
-      onChange={(e) => setInput(e.target.value)}
-      placeholder="Ask something..."
-      onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-    />
-    <Button onClick={sendMessage} disabled={loading}>
-      Send
-    </Button>
-  </div>
-</Card>
+      </Card>
     </>
   );
 }
