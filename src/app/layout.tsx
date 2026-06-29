@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Master Programmer CG",
+  title: "SOFTWARE ENGINEER",
   description: ":~:",
 };
 
