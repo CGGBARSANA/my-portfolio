@@ -33,9 +33,10 @@ export function CarouselDemo({ item }: { item: ProjectItem }) {
                   <Image
                     src={image}
                     alt={image}
-                    width={800}
-                    height={800}
-                    className="w-full h-full object-contain"
+                    fill
+                    quality={100}
+                    sizes="100vw"
+                    className="object-contain"
                   />
                 </CardContent>
               </div>
