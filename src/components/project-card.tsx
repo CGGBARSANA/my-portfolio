@@ -21,11 +21,31 @@ import { ProjectItem } from "@/const/project";
 import { ScrollArea } from "./ui/scroll-area";
 
 export function CarouselDemo({ item }: { item: ProjectItem }) {
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   return (
     <div className="flex flex-col gap-4">
       {/* CAROUSEL (fixed space only) */}
+<<<<<<< Updated upstream
       <Carousel className="w-full ">
         <CarouselContent className="p-1 border-0">
+=======
+      <Carousel className="w-full " setApi={setApi}>
+        <CarouselContent className="p-1 border-0 rounded-2xl">
+>>>>>>> Stashed changes
           {item.images?.map((image, index) => (
             <CarouselItem key={index}>
               <div className="h-137.5 w-full overflow-hidden ">
@@ -46,6 +66,22 @@ export function CarouselDemo({ item }: { item: ProjectItem }) {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
+
+      {/* Hint: dot indicators showing it's a carousel */}
+      {count > 1 && (
+        <div className="flex items-center justify-center gap-1.5">
+          {Array.from({ length: count }).map((_, index) => (
+            <span
+              key={index}
+              className={`h-1.5 rounded-full transition-all ${
+                index === current
+                  ? "w-4 bg-foreground"
+                  : "w-1.5 bg-foreground/30"
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
