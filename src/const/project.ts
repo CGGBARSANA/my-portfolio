@@ -26,7 +26,15 @@ export const projects: ProjectItem[] = [
   },
 {
     title: "EmotiCom (AAC) System",
-    image: "/emoticom.jpg",
+    images: [
+      "https://christianbarsana.netlify.app/uploads/emoticom1.jpg",
+      "https://christianbarsana.netlify.app/uploads/emoticom2.jpg",
+      "https://christianbarsana.netlify.app/uploads/emoticom3.jpg",
+      "https://christianbarsana.netlify.app/uploads/emoticom4.jpg",
+      "https://christianbarsana.netlify.app/uploads/emoticom5.jpg",
+      "https://christianbarsana.netlify.app/uploads/emoticom6.jpg",
+      "https://christianbarsana.netlify.app/uploads/emoticom7.jpg"
+    ],
     imageAlt: "EmotiCom AAC System",
     badges: ["Python", "TensorFlow"],
     webhref: "https://github.com/BarsanaXD/emoticom-repo",
