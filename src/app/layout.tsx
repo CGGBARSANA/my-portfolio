@@ -20,7 +20,6 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-<<<<<<< HEAD
   metadataBase: new URL("https://christianbarsana.netlify.app/dashboard"),
 
   title: "Christian Barsana | AI & Software Engineer",
@@ -45,10 +44,6 @@ export const metadata: Metadata = {
       "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
     images: ["/uploads/profile.jpg"],
   },
-=======
-  title: "SOFTWARE ENGINEER",
-  description: ":~:",
->>>>>>> 5a78e5413e9879416ace749ea5588dd4bd284585
 };
 
 export default function RootLayout({
