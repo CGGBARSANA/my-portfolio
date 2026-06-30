@@ -20,8 +20,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Master Programmer CG",
-  description: ":~:",
+  metadataBase: new URL("https://christianbarsana.netlify.app/dashboard"),
+
+  title: "Christian Barsana | AI & Software Engineer",
+  description:
+    "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
+
+  openGraph: {
+    title: "Christian Barsana | AI & Software Engineer",
+    description:
+      "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
+    url: "https://christianbarsana.netlify.app/dashboard",
+    siteName: "SOFTWARE ENGINEER",
+    images: ["/uploads/profile.jpg"],
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Christian Barsana | AI & Software Engineer",
+    description:
+      "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
+    images: ["/uploads/profile.jpg"],
+  },
 };
 
 export default function RootLayout({
