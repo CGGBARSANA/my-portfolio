@@ -19,20 +19,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const ogImageUrl = "https://christianbarsana.netlify.app/uploads/image.png";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://christianbarsana.netlify.app/dashboard"),
-
   title: "Christian Barsana | AI & Software Engineer",
-  description:
-    "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
+  description: "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
 
   openGraph: {
     title: "Christian Barsana | AI & Software Engineer",
-    description:
-      "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
+    description: "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
     url: "https://christianbarsana.netlify.app/dashboard",
     siteName: "SOFTWARE ENGINEER",
-    images: ["/profile.jpg"],
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Christian Barsana - AI & Software Engineer",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
@@ -40,12 +46,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Christian Barsana | AI & Software Engineer",
-    description:
-      "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
-    images: ["/profile.jpg"],
+    description: "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
+    images: [ogImageUrl],
   },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
