@@ -32,7 +32,7 @@ export const metadata: Metadata = {
       "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
     url: "https://christianbarsana.netlify.app/dashboard",
     siteName: "SOFTWARE ENGINEER",
-    images: ["/uploads/profile.jpg"],
+    images: ["/profile.jpg"],
     locale: "en_US",
     type: "website",
   },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "Christian Barsana | AI & Software Engineer",
     description:
       "Explore my portfolio showcasing AI, Computer Vision, Full Stack Development, and Machine Learning projects.",
-    images: ["/uploads/profile.jpg"],
+    images: ["/profile.jpg"],
   },
 };
 
