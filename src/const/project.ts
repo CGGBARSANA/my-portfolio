@@ -13,7 +13,7 @@ export type ProjectItem = {
 export const projects: ProjectItem[] = [
   {
     title: "IM.AI Tablet Application",
-    image: "https://christianbarsana.netlify.app/uploads/im.ai.gif",
+    images: ["https://christianbarsana.netlify.app/uploads/im.ai.gif"],
     imageAlt: "IM.AI Tablet App",
     badges: ["Python", "PyQt", "SQL Server", "TensorFlow", "MongoDB"],
     description:
