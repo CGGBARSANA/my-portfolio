@@ -28,8 +28,8 @@ export function CarouselDemo({ item }: { item: ProjectItem }) {
         <CarouselContent className="p-1 border-0 rounded-2xl">
           {item.images?.map((image, index) => (
             <CarouselItem key={index}>
-              <div className="h-137.5 w-full overflow-hidden ">
-                <CardContent className="p-0 h-full w-full flex items-center justify-center bg-black">
+              <div className="h-137.5 w-full overflow-hidden">
+                <CardContent className="p-0 h-full w-full flex items-center justify-center bg-background">
                   <Image
                     src={image}
                     alt={image}
@@ -42,7 +42,6 @@ export function CarouselDemo({ item }: { item: ProjectItem }) {
             </CarouselItem>
           ))}
         </CarouselContent>
-
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
