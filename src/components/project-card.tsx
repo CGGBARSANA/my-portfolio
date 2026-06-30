@@ -11,6 +11,7 @@ export type ProjectCardProp = {
 
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -39,13 +40,8 @@ export function CarouselDemo({ item }: { item: ProjectItem }) {
   return (
     <div className="flex flex-col gap-4">
       {/* CAROUSEL (fixed space only) */}
-<<<<<<< Updated upstream
-      <Carousel className="w-full ">
-        <CarouselContent className="p-1 border-0">
-=======
       <Carousel className="w-full " setApi={setApi}>
         <CarouselContent className="p-1 border-0 rounded-2xl">
->>>>>>> Stashed changes
           {item.images?.map((image, index) => (
             <CarouselItem key={index}>
               <div className="h-137.5 w-full overflow-hidden ">

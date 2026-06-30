@@ -11,8 +11,6 @@ export type ProjectItem = {
 };
 
 export const projects: ProjectItem[] = [
-<<<<<<< Updated upstream
-=======
   {
   title: "FRAME",
   images: ["https://christianbarsana.netlify.app/uploads/frame.gif"],
@@ -56,7 +54,6 @@ export const projects: ProjectItem[] = [
     "Reduced manual labeling time by automating repetitive annotation tasks",
   ],
 },
->>>>>>> Stashed changes
   {
     title: "IM.AI Tablet Application",
     image: "/im-ai.jpg",
