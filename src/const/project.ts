@@ -11,6 +11,27 @@ export type ProjectItem = {
 };
 
 export const projects: ProjectItem[] = [
+{
+  title: "Yolo Auto Annotation Tool",
+  images: [
+    "https://christianbarsana.netlify.app/autotate/autotate1.jpg",
+    "https://christianbarsana.netlify.app/autotate/autotate2.jpg",
+    "https://christianbarsana.netlify.app/autotate/autotate3.jpg",
+    "https://christianbarsana.netlify.app/autotate/autotate4.jpg",
+  ],
+  imageAlt: "AI Auto Annotation Tool",
+  badges: ["Python", "PyQt5", "YOLOv11", "OpenCV", "Albumentations"],
+  webhref: "https://github.com/CGGBARSANA/Yolo-Auto-Annotate",
+  description:
+    "Desktop application that automatically annotates image datasets using pretrained YOLO models. Includes image preprocessing, data augmentation, and an interactive annotation workflow to accelerate dataset creation while maintaining annotation quality.",
+  highlights: [
+    "Automatically generated bounding box annotations using pretrained YOLO models",
+    "Applied image preprocessing and data augmentation for improved dataset quality",
+    "Built an interactive PyQt5 interface for reviewing and correcting annotations",
+    "Exported annotations in YOLO-compatible dataset format",
+    "Reduced manual labeling time by automating repetitive annotation tasks",
+  ],
+},
   {
     title: "IM.AI Tablet Application",
     images: ["https://christianbarsana.netlify.app/uploads/im.ai.gif"],
